@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000'
+const url = 'https://orion-kanban.herokuapp.com'
 
 $(document).ready(function(){
     test()
