@@ -10,18 +10,164 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous">
     </script>
+
+    <!-- GOOGLE SIGNIN -->
+    <meta name="google-signin-client_id" content="831376088434-jvhu4i71qfsvfdj38qff4l17um05gjff.apps.googleusercontent.com">
     
-    <!-- AJAX -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS STYLE COMPILED FROM SASS -->
+    <link rel="stylesheet" href="./assets/stylesheets/style.css">
     <title>Orion Kanban</title>
 </head>
 <body>
 
-    <div id="test">
+    <div id="app">
+
+        <!-- LOGIN / REGISTER FIELD -->
+        <div class="sign_page">
+            <div class="container_sign">
+                <div class="signin">
+                    <h4>Sign in Orion Kanban</h4>
+                    <input class="signin_username" type="email" placeholder="Enter email">
+                    <input class="signin_password" type="password" placeholder="Enter password">
+                    <a href="#" class="signin_button">Sign In</a>
+                    <p>OR</p>
+                    <a href="#" class="signin_google_button"><i class="fa fa-google"></i>Sign in with Google</a>
+                    <a href="#" class="signin_register">Sign Up for an account</a>
+                </div>
+                <div class="signup">
+                    <h4>Sign up for your account</h4>
+                    <input class="signup_name" type="text" placeholder="Enter your name">
+                    <input class="signup_username" type="email" placeholder="Enter your email">
+                    <input class="signup_password" type="password" placeholder="Enter your password">
+                    <a href="#" class="signup_button">Sign Up</a>
+                    <a href="#" class="cancel_signup_button">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- KANBAN FIELD -->
+        <div class="main_page">
+            <header>
+                <nav class="nav_content">
+                    <a href="#" class="app_name">Orion Kanban</a>
+                    <div class="button">
+                        <a href="#" class="signout_button">Sign Out</a>
+                    </div>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="container_main">
+                    <div class="board">
+                        <div class="board_category">
+                            <div class="board_title">Backlog</div>
+                            <div class="icon"><i class="fa fa-simplybuilt"></i></div>
+                        </div>
+                        <div class="board_content">
+                            <div class="card" v-for="el in card_backlog">
+                                <div class="task_title">{{el.title}}</div>
+                                <div class="task_desc">{{el.description}}</div>
+                                <div class="task_footer">
+                                    <div class="info">
+                                        <div class="date">{{el.date.toDateString()}}</div>
+                                        <div class="email">{{el.email}}</div>
+                                    </div>
+                                    <div class="crud">
+                                        <div><a href="#"><i class="fa fa-trash"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-pencil"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-refresh"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board">
+                        <div class="board_category">
+                            <div class="board_title">Todo</div>
+                            <div class="icon"><i class="fa fa-stack-overflow"></i></div>
+                        </div>
+                        <div class="board_content">
+                            <div class="card" v-for="el in card_backlog">
+                                <div class="task_title">{{el.title}}</div>
+                                <div class="task_desc">{{el.description}}</div>
+                                <div class="task_footer">
+                                    <div class="info">
+                                        <div class="date">{{el.date.toDateString()}}</div>
+                                        <div class="email">{{el.email}}</div>
+                                    </div>
+                                    <div class="crud">
+                                        <div><a href="#"><i class="fa fa-trash"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-pencil"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-refresh"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board">
+                        <div class="board_category">
+                            <div class="board_title">Done</div>
+                            <div class="icon"><i class="fa fa-check-square"></i></div>
+                        </div>
+                        <div class="board_content">
+                            <div class="card" v-for="el in card_backlog">
+                                <div class="task_title">{{el.title}}</div>
+                                <div class="task_desc">{{el.description}}</div>
+                                <div class="task_footer">
+                                    <div class="info">
+                                        <div class="date">{{el.date.toDateString()}}</div>
+                                        <div class="email">{{el.email}}</div>
+                                    </div>
+                                    <div class="crud">
+                                        <div><a href="#"><i class="fa fa-trash"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-pencil"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-refresh"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board">
+                        <div class="board_category">
+                            <div class="board_title">Completed</div>
+                            <div class="icon"><i class="fa fa-dollar"></i></div>
+                        </div>
+                        <div class="board_content">
+                            <div class="card" v-for="el in card_backlog">
+                                <div class="task_title">{{el.title}}</div>
+                                <div class="task_desc">{{el.description}}</div>
+                                <div class="task_footer">
+                                    <div class="info">
+                                        <div class="date">{{el.date.toDateString()}}</div>
+                                        <div class="email">{{el.email}}</div>
+                                    </div>
+                                    <div class="crud">
+                                        <div><a href="#"><i class="fa fa-trash"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-pencil"></i></a></div>
+                                        <div><a href="#"><i class="fa fa-refresh"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
 
     </div>
+    
+
+    <!-- GOOGLE SIGNIN -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- MAIN SCRIPT -->
-    <script src="main.js"></script>
+    <script src="./assets/script/main.js"></script>
 </body>
 </html>

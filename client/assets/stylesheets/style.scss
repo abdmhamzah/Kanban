@@ -1,0 +1,288 @@
+$color1 : #FFFFFF;
+$color2 : #AAAAAA; 
+$color3: #777777;
+$color4: #000000;
+$color5: #0079C1;
+$color6: #0B577C;
+$color7: #4A96C0;
+$card1: #EAEAEA;
+$danger: #FA4E43;
+$good: #5AAC44;
+$warn: #FFBB19;
+
+$font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+body {
+    margin: 0px;
+    font-family: $font;
+}
+
+a{
+    text-decoration: none;
+}
+
+// SIGNIN / SINGUP PAGE
+.sign_page{
+    padding-left: 35%;
+    padding-right: 35%;
+    padding-top: 8%;
+    padding-bottom: 25%;
+    
+    .container_sign{
+        background-color: $color1;
+        padding: 25px 40px;
+        font-family: $font;
+        color: $color3;
+        border-radius: 10px;
+        box-shadow: 0 0 20px -10px;
+
+        .signin{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            input{
+                font-size: 14px;
+                width: 100%;
+                padding: 10px;
+                margin: 2px 0 16px;
+                border: $color2 solid 1px;
+                box-sizing: border-box;
+                border-radius: 4px;
+            }
+            input:focus{
+                outline: none;
+            }
+
+            .signin_button{
+                color: $color1;
+                background-color: $good;
+                display: flex;
+                justify-content: center;
+    
+                width: 100%;
+                padding: 9px 0;
+                margin: 2px 0 16px;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+            p {
+                color: $color2;
+                margin-bottom: 16px;
+                margin-top: 0px;
+                font-weight: 50;
+                font-size: 14px;
+            }
+
+            .signin_google_button{
+                background-color: $danger;
+                color: $color1;
+                display: flex;
+                justify-content: center;
+
+                width: 100%;
+                padding: 9px 0;
+                margin: 2px 0 16px;
+                border-radius: 4px;
+                font-size: 16px;
+                i {
+                    margin-right: 10px;
+                }
+            }
+
+            .signin_register{
+                color: $color5;
+
+                font-size: 14px;
+            }
+        }
+
+        .signup{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: $color3;
+
+            input{
+                font-size: 14px;
+                width: 100%;
+                padding: 10px;
+                margin: 2px 0 16px;
+                border: $color2 solid 1px;
+                box-sizing: border-box;
+                border-radius: 4px;
+            }
+            input:focus{
+                outline: none;
+            }
+
+            .signup_button{
+                color: $color1;
+                background-color: $good;
+                display: flex;
+                justify-content: center;
+    
+                width: 100%;
+                padding: 9px 0;
+                margin: 2px 0 16px;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+            .cancel_signup_button{
+                color: $color3;
+            }
+
+            p {
+                color: $color2;
+                margin-bottom: 16px;
+                margin-top: 0px;
+                font-weight: 50;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+
+
+// NAVIGATION PANEL
+.nav_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: $color6;
+
+    .app_name{
+        color: $color1;
+        font-weight: bolder;
+        font-size: 25px;
+        text-decoration: none;
+    }
+    .signout_button{
+        color: $color2;
+        background-color: $color6;
+
+        border-radius: 4px;
+        padding: 9px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+
+        cursor: pointer;
+    }
+    .signout_button:hover{
+        color: $color1;
+        background-color: $danger;
+    }
+}
+
+
+// MAIN PAGE
+.main_page{
+    background-color: $color5;
+    padding-bottom: 20%;
+    .container_main {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px;
+        padding: 2% 2%;
+
+        .board{
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 5px;
+            border-radius: 10px;
+
+            .board_category {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 20px;
+                background-color: $color2;
+            
+                .icon {
+                    color: $color1;
+                }
+            
+                .board_title{
+                    font-weight: bold;
+                    color: $color1;
+                }
+            }
+            .board_content {
+                display: flex;
+                flex-direction: column;
+                padding: 5px;
+                background-color: $card1;
+            
+                .card {
+                    background-color: $color1;
+                    color: $color4;
+                    margin: 5px;
+                    padding: 5px;
+                    border-radius: 10px;
+            
+                    .task_title{
+                        font-size: 15px;
+                        margin: 5px;
+                        color: $color4;
+                    }
+                    .task_desc{
+                        color: $color3;
+                        font-size: 12px;
+                        margin: 5px;
+                    }
+                    .task_footer{
+                        display: flex;
+                        justify-content: space-between;
+                        .info{
+                            .email{
+                                font-size: 10px;
+                                margin: 5px;
+                            }
+                            .date{
+                                font-size: 10px;
+                                margin: 5px;
+                            }
+                        }
+                        .crud{
+                            display: flex;
+                            flex-direction: row-reverse;
+                            align-items: flex-end;
+                            font-size: 15px;
+                            margin: 5px;
+                            a {
+                                color: $color2;
+                                i {
+                                    margin-left: 10px;
+                                }
+                                .fa-refresh:hover{
+                                    color: $good;
+                                }
+                                .fa-pencil:hover{
+                                    color: $warn;
+                                }
+                                .fa-trash:hover{
+                                    color: $danger;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
