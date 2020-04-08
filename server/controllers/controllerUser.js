@@ -3,6 +3,9 @@ const { User } = require('../models')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
 class ControllerUser {
 
     static signup(req, res){
@@ -83,9 +86,56 @@ class ControllerUser {
     }
 
     static signinGoogle(req, res){
-        res.status(200).json({
-            message: 'Halaman Signin Google'
+        const token = req.body.token
+        const user = {}
+        client.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_CLIENT_ID
         })
+            .then(data => {
+                const payload = data.getPayload()
+                // console.log(payload);
+                user.name = payload.name
+                user.email = payload.email
+                user.password = process.env.DEF_PASS
+
+                return User.findOne({
+                    where: {
+                        email: email
+                    }
+                })
+            })
+            .then(userData => {
+                if (!userData) {
+                    return User.create(user)
+                } else {
+                    return userData
+                }
+            })
+            .then(userLogin => {
+                const userObj = {
+                    UserId: userLogin.id,
+                    email: userLogin.email
+                }
+                const token = jwt.sign(userObj, process.env.JWT_SECRET)
+                res.status(200).json({
+                    statusCode: 200,
+                    message: 'Sign In User Successfull',
+                    payload: {
+                        token: token,
+                        user: {
+                            name: userLogin.name,
+                            email: userLogin.email
+                        }
+                    }
+                })
+            })
+            .catch(err => {
+                res.status(500).json({
+                    statusCode: 500,
+                    message: 'Server Error'
+                })
+            })
     }
 }
 
