@@ -31,7 +31,7 @@
         <!-- LOGIN / REGISTER FIELD -->
         <div class="sign_page">
             <div class="container_sign">
-                <div class="signin">
+                <div class="signin" v-show="signin_field">
                     <h4>Sign in Orion Kanban</h4>
                     <input class="signin_username" type="email" placeholder="Enter email">
                     <input class="signin_password" type="password" placeholder="Enter password">
@@ -40,7 +40,7 @@
                     <a href="#" class="signin_google_button"><i class="fa fa-google"></i>Sign in with Google</a>
                     <a href="#" class="signin_register">Sign Up for an account</a>
                 </div>
-                <div class="signup">
+                <div class="signup" v-show="signup_field">
                     <h4>Sign up for your account</h4>
                     <input class="signup_name" type="text" placeholder="Enter your name">
                     <input class="signup_username" type="email" placeholder="Enter your email">

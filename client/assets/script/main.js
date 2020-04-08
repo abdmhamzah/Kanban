@@ -26,6 +26,8 @@ new Vue ({
         card_backlog: data,
         card_todo: data,
         card_done: data,
-        card_completed: data
+        card_completed: data,
+        signin_field: true,
+        signup_field: false
     }
 })
