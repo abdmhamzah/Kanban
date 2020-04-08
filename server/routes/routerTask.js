@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const ControllerTask = require('../controllers/controllerTask')
+const authentication = require('../middlewares/authentication')
 
-router.get('/', ControllerTask.showTasks)
-router.post('/', ControllerTask.createTask)
+router.get('/', authentication, ControllerTask.showTasks)
+router.post('/', authentication, ControllerTask.createTask)
 router.put('/', ControllerTask.updateTask)
 router.delete('/', ControllerTask.deleteTask)
 
