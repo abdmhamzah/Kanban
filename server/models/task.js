@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       validation: {
         notEmpty: {
           args: true,
-          msg: 'Please enter Task Title'
+          message: 'Please enter Task Title'
         }
       }
     },
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       validation: {
         notEmpty: {
           args: true,
-          msg: 'Please enter Task Description'
+          message: 'Please enter Task Description'
         }
       }
     },

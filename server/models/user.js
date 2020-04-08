@@ -1,6 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcrypt')
+const { hashPassword } = require('../helpers/bcrypt')
 
 module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       validation: {
         notEmpty: {
           args: true,
-          msg: 'Please enter your Name'
+          message: 'Please enter your Name'
         }
       }
     },
@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       validation: {
         notEmpty: {
           args: true,
-          msg: 'Please enter your Email'
+          message: 'Please enter your Email'
         },
         isEmail: {
           args: true,
-          msg: 'Your Email Invalid'
+          message: 'Your Email is Invalid'
         },
       }
     },
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       validation: {
         notEmpty: {
           args: true,
-          msg: 'Please enter your Password'
+          message: 'Please enter your Password'
         }
       }
     },
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate: (user, opt) => {
         user.organization = 'Hacktiv8 Indonesia'
-        user.password = bcrypt.hashSync(user.password, 8)
+        user.password = hashPassword(user.password)
       }
   },
     sequelize 

@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const ControllerUser = require('../controllers/controllerUser')
 
-router.get('/signup', ControllerUser.signup)
-router.get('/signin', ControllerUser.signin)
-router.get('/signin-google', ControllerUser.signinGoogle)
+router.post('/signup', ControllerUser.signup)
+router.post('/signin', ControllerUser.signin)
+router.post('/signin-google', ControllerUser.signinGoogle)
 
 module.exports = router
