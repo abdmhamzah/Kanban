@@ -8,17 +8,20 @@ a {
 }
 
 .sign_page {
-  padding-left: 35%;
-  padding-right: 35%;
-  padding-top: 8%;
-  padding-bottom: 25%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 .sign_page .container_sign {
   background-color: #FFFFFF;
-  padding: 25px 40px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #777777;
+  padding: 25px 40px;
   border-radius: 10px;
+  width: 300px;
+  height: 360px;
   box-shadow: 0 0 20px -10px;
 }
 .sign_page .container_sign .signin {
@@ -108,13 +111,6 @@ a {
 .sign_page .container_sign .signup .cancel_signup_button {
   color: #777777;
 }
-.sign_page .container_sign .signup p {
-  color: #AAAAAA;
-  margin-bottom: 16px;
-  margin-top: 0px;
-  font-weight: 50;
-  font-size: 14px;
-}
 
 .nav_content {
   display: flex;
@@ -150,19 +146,18 @@ a {
 
 .main_page {
   background-color: #0079C1;
-  padding-bottom: 20%;
+  height: 100vh;
 }
 .main_page .container_main {
   display: flex;
   justify-content: space-between;
-  margin: 5px;
-  padding: 2% 2%;
+  margin: 10px;
 }
 .main_page .container_main .board {
   flex-direction: column;
   justify-content: space-between;
-  margin: 5px;
-  border-radius: 10px;
+  margin: 10px;
+  width: 100%;
 }
 .main_page .container_main .board .board_category {
   display: flex;
@@ -183,6 +178,12 @@ a {
   flex-direction: column;
   padding: 5px;
   background-color: #EAEAEA;
+}
+.main_page .container_main .board .board_content .def_card {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: #AAAAAA;
 }
 .main_page .container_main .board .board_content .card {
   background-color: #FFFFFF;

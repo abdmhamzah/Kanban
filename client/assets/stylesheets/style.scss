@@ -17,23 +17,28 @@ body {
     font-family: $font;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 // SIGNIN / SINGUP PAGE
 .sign_page{
-    padding-left: 35%;
-    padding-right: 35%;
-    padding-top: 8%;
-    padding-bottom: 25%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     
     .container_sign{
         background-color: $color1;
-        padding: 25px 40px;
         font-family: $font;
         color: $color3;
+
+        padding: 25px 40px;
         border-radius: 10px;
+        width: 300px;
+        height: 360px;
+
         box-shadow: 0 0 20px -10px;
 
         .signin{
@@ -136,13 +141,13 @@ a{
                 color: $color3;
             }
 
-            p {
-                color: $color2;
-                margin-bottom: 16px;
-                margin-top: 0px;
-                font-weight: 50;
-                font-size: 14px;
-            }
+            // p {
+            //     color: $color2;
+            //     margin-bottom: 16px;
+            //     margin-top: 0px;
+            //     font-weight: 50;
+            //     font-size: 14px;
+            // }
         }
     }
 }
@@ -189,18 +194,18 @@ a{
 // MAIN PAGE
 .main_page{
     background-color: $color5;
-    padding-bottom: 20%;
+    height: 100vh;
+
     .container_main {
         display: flex;
         justify-content: space-between;
-        margin: 5px;
-        padding: 2% 2%;
+        margin: 10px;
 
         .board{
             flex-direction: column;
             justify-content: space-between;
-            margin: 5px;
-            border-radius: 10px;
+            margin: 10px;
+            width: 100%;
 
             .board_category {
                 display: flex;
@@ -224,6 +229,12 @@ a{
                 padding: 5px;
                 background-color: $card1;
             
+                .def_card{
+                    display: flex;
+                    justify-content: center;
+                    padding: 20px;
+                    color: $color2;
+                }
                 .card {
                     background-color: $color1;
                     color: $color4;

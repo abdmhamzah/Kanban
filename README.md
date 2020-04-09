@@ -29,6 +29,8 @@ Technology Used in this Project:
 
 `Add new data of User`
 
+Route: URL /user/signup
+
 - _Request Header_
 ```
 Empty
@@ -73,6 +75,8 @@ Response (500):
 ## POST/Signin
 
 `Authentication user Data`
+
+Route: URL /user/signin
 
 - _Request Header_
 ```
@@ -123,6 +127,8 @@ Response (500):
 
 `Authentication user Data`
 
+Route: URL /user/signin-google
+
 - _Request Header_
 ```
 Empty
@@ -161,6 +167,8 @@ Response (500):
 ## GET/Tasks
 
 `Get all Tasks`
+
+Route: URL /tasks/
 
 - _Request Header_
 ```
@@ -214,6 +222,8 @@ Response (500):
 ## POST/Tasks
 
 `Add new Task`
+
+Route: URL /tasks/
 
 - _Request Header_
 ```
@@ -269,6 +279,8 @@ Response (500):
 
 `Update existing Task with new updated data`
 
+Route: URL /tasks/
+
 - _Request Header_
 ```
 {
@@ -322,6 +334,8 @@ Response (500):
 ## DELETE/Tasks
 
 `Delete existing Task`
+
+Route: URL /tasks/
 
 - _Request Header_
 ```

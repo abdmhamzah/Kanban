@@ -11,6 +11,9 @@
         crossorigin="anonymous">
     </script>
 
+    <!-- AXIOS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- GOOGLE SIGNIN -->
     <meta name="google-signin-client_id" content="831376088434-jvhu4i71qfsvfdj38qff4l17um05gjff.apps.googleusercontent.com">
     
@@ -29,36 +32,40 @@
     <div id="app">
 
         <!-- LOGIN / REGISTER FIELD -->
-        <div class="sign_page">
+        <div class="sign_page" v-show="sign_page">
             <div class="container_sign">
                 <div class="signin" v-show="signin_field">
                     <h4>Sign in Orion Kanban</h4>
-                    <input class="signin_username" type="email" placeholder="Enter email">
-                    <input class="signin_password" type="password" placeholder="Enter password">
-                    <a href="#" class="signin_button">Sign In</a>
+                    <form @submit.prevent="signin">
+                        <input v-model="signin_email" class="signin_username" type="email" placeholder="Enter email" required>
+                        <input v-model="signin_password" class="signin_password" type="password" placeholder="Enter password" required>
+                        <button type="submit" class="signin_button">Sign In</button>
+                    </form>
                     <p>OR</p>
-                    <a href="#" class="signin_google_button"><i class="fa fa-google"></i>Sign in with Google</a>
-                    <a href="#" class="signin_register">Sign Up for an account</a>
+                    <button class="signin_google_button"><i class="fa fa-google"></i>Sign in with Google</button>
+                    <a href="#" class="signin_register" @click.prevent="toSignup">Sign Up for an account</a>
                 </div>
                 <div class="signup" v-show="signup_field">
                     <h4>Sign up for your account</h4>
-                    <input class="signup_name" type="text" placeholder="Enter your name">
-                    <input class="signup_username" type="email" placeholder="Enter your email">
-                    <input class="signup_password" type="password" placeholder="Enter your password">
-                    <a href="#" class="signup_button">Sign Up</a>
-                    <a href="#" class="cancel_signup_button">Cancel</a>
+                    <form @submit.prevent="signup">
+                        <input v-model="signup_name" class="signup_name" type="text" placeholder="Enter your name" required>
+                        <input v-model="signup_email" class="signup_email" type="email" placeholder="Enter your email" required>
+                        <input v-model="signup_password" class="signup_password" type="password" placeholder="Enter your password" required>
+                        <button class="signup_button">Sign Up</button>
+                    </form>
+                    <a href="#" class="cancel_signup_button" @click.prevent="toSignin">Cancel</a>
                 </div>
             </div>
         </div>
 
 
         <!-- KANBAN FIELD -->
-        <div class="main_page">
+        <div class="main_page" v-show="main_page">
             <header>
                 <nav class="nav_content">
                     <a href="#" class="app_name">Orion Kanban</a>
                     <div class="button">
-                        <a href="#" class="signout_button">Sign Out</a>
+                        <a href="#" @click.prevent="toSignout" class="signout_button">Sign Out</a>
                     </div>
                 </nav>
             </header>
@@ -71,7 +78,8 @@
                             <div class="icon"><i class="fa fa-simplybuilt"></i></div>
                         </div>
                         <div class="board_content">
-                            <div class="card" v-for="el in card_backlog">
+                            <div class="def_card" v-if="card_backlog.length == 0">No Data</div>
+                            <div class="card" v-else v-for="el in card_backlog">
                                 <div class="task_title">{{el.title}}</div>
                                 <div class="task_desc">{{el.description}}</div>
                                 <div class="task_footer">
@@ -94,6 +102,7 @@
                             <div class="icon"><i class="fa fa-stack-overflow"></i></div>
                         </div>
                         <div class="board_content">
+                            <div class="def_card" v-if="card_backlog.length == 0">No Data</div>
                             <div class="card" v-for="el in card_backlog">
                                 <div class="task_title">{{el.title}}</div>
                                 <div class="task_desc">{{el.description}}</div>
@@ -117,6 +126,7 @@
                             <div class="icon"><i class="fa fa-check-square"></i></div>
                         </div>
                         <div class="board_content">
+                            <div class="def_card" v-if="card_backlog.length == 0">No Data</div>
                             <div class="card" v-for="el in card_backlog">
                                 <div class="task_title">{{el.title}}</div>
                                 <div class="task_desc">{{el.description}}</div>
@@ -140,6 +150,7 @@
                             <div class="icon"><i class="fa fa-dollar"></i></div>
                         </div>
                         <div class="board_content">
+                            <div class="def_card" v-if="card_backlog.length == 0">No Data</div>
                             <div class="card" v-for="el in card_backlog">
                                 <div class="task_title">{{el.title}}</div>
                                 <div class="task_desc">{{el.description}}</div>
