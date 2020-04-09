@@ -14,12 +14,14 @@ const authorization = (req, res, next) => {
                     message: 'Task ID not found'
                 })
             } else {
-                if (user.UserId != req.UserID) {
+                if (task.UserId != req.UserId) {
+                    console.log({task: task.UserId, global: req.UserId});
                     res.status(403).json({
                         statusCode: 403,
                         message: 'You have no permit'
                     })
                 } else {
+                    console.log({task: task.UserId, global: req.UserId});
                     next()
                 }
             }

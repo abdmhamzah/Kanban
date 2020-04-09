@@ -6,8 +6,6 @@ const authentication = (req, res, next) => {
     try {
         const token = req.headers.token
         if (token) {
-            console.log(token);
-            
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
             req.UserId = decoded.UserId // NYIMPEN ID DI PARAMETER GLOBAL
             next()

@@ -2,12 +2,16 @@
 
 by Hamzah Abdullah Mubarak
 
-An Simple Todo Application with some features:
-- Created Todo
-- Show List of created Todos
-- Show created Todo with specific ID
-- Update created Todo
-- Delete Todo
+An Simple Kanban Application with some features:
+- Show list of created Task with 4 Category :
+    - Backlog
+    - Todo
+    - Done 
+    - Completed
+- Create Task
+- Change it's Progress
+- Update created Task
+- Delete created Task
 
 Technology Used in this Project:
 - Vue JS
@@ -18,7 +22,6 @@ Technology Used in this Project:
 - Postgres
 - JSON Web Token
 - Bcrypt
-- Ajax
 - Axios
 
 
@@ -88,7 +91,15 @@ Empty
 ```
 Response (200):
 {
-    "token": < User Token >
+    "status": 200,
+    "message": "Sign In User Successfull",
+    "payload": {
+        "token": < User Token >,
+        "user": {
+            "name": < User Name >,
+            "email": < User Email >
+        }
+    }
 }
 
 Response (400): 
@@ -129,17 +140,15 @@ Empty
 ```
 Response (200):
 {
-    "token": < User Token >
-}
-
-Response (400): 
-{
-    "messege": "Invalid Username / Password, Please try again"
-}
-
-Response (404): 
-{
-    "messege": "User not found, please register yourself"
+    "status": 200,
+    "message": "Sign In User Successfull",
+    "payload": {
+        "token": < User Token >,
+        "user": {
+            "name": < User Name >,
+            "email": < User Email >
+        }
+    }
 }
 
 Response (500):
@@ -227,7 +236,7 @@ Response (500):
 Response (200):
 {
     "statusCode": 200,
-    "message": "New Task Created Succesfully",
+    "message": "New Task Succesfully Created",
     "payload": {
         "id": < Task ID >,
         "title": < Task Title >,
@@ -247,6 +256,110 @@ Response (404):
 {
     "statusCode": 404,
     "message": "Token not found"
+}
+
+Response (500):
+{
+    "messege": "Server Error"
+}
+```
+-----
+
+## PUT/Tasks
+
+`Update existing Task with new updated data`
+
+- _Request Header_
+```
+{
+    "token": < User Token >
+}
+```
+
+- _Request Body_
+```
+{
+    "title": < Task Title >,
+    "description": < Task Description >,
+    "category": < Task Category >,
+}
+```
+
+- _Response_
+```
+Response (200):
+{
+    "statusCode": 200,
+    "message": "Task Succesfully Updated",
+    "payload": {
+        "id": < Task ID >,
+        "title": < Task Title >,
+        "description": < Task Description >,
+        "category": < Task Category >,
+        "UserId": < User ID >,
+    }
+}
+
+Response(403):
+{
+    "statusCode": 403,
+    "message": "You have no permit"
+}
+
+Response (404): 
+{
+    "statusCode": 404,
+    "message": "Task not found"
+}
+
+Response (500):
+{
+    "messege": "Server Error"
+}
+```
+-----
+
+## DELETE/Tasks
+
+`Delete existing Task`
+
+- _Request Header_
+```
+{
+    "token": < User Token >
+}
+```
+
+- _Request Body_
+```
+Empty
+```
+
+- _Response_
+```
+Response (200):
+{
+    "statusCode": 200,
+    "message": "Task Succesfully Deleted",
+    "payload": {
+        "id": < Task ID >,
+        "title": < Task Title >,
+        "description": < Task Description >,
+        "category": < Task Category >,
+        "UserId": < User ID >,
+    }
+}
+
+Response(403):
+{
+    "statusCode": 403,
+    "message": "You have no permit"
+}
+
+Response (404): 
+{
+    "statusCode": 404,
+    "message": "Task not found"
 }
 
 Response (500):

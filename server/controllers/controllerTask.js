@@ -35,7 +35,7 @@ class ControllerTask {
                 if (newTask) {
                     res.status(200).json({
                         statusCode: 200,
-                        message: 'New Task Created Succesfully',
+                        message: 'New Task Succesfully Created',
                         payload: newTask
                     })
                 } else {
@@ -54,15 +54,82 @@ class ControllerTask {
     }
 
     static updateTask(req, res){
-        res.status(200).json({
-            msg: 'Halaman Update Task'
+        const { id } = req.params
+        const { title, description, category } = req.body
+
+        Task.findOne({
+            where: {
+                id: id,
+                UserId: req.UserId
+            }
         })
+            .then(task => {
+                if (!task) {
+                    res.status(404).json({
+                        statusCode: 404,
+                        message: 'Task not Found'
+                    })
+                } else {
+                    return task.update({
+                        title: title,
+                        description: description,
+                        category: category,
+                        UserId: req.UserId
+                    })
+                }
+            })
+            .then(updatedTask => {
+                res.status(200).json({
+                    statusCode: 200,
+                    message: 'Task Succesfully Updated',
+                    payload: updatedTask
+                })
+            })
+            .catch(err => {
+                res.status(500).json({
+                    statusCode: 500,
+                    message: 'Server Error'
+                })
+            })
+
     }
 
     static deleteTask(req, res){
-        res.status(200).json({
-            msg: 'Halaman Delete Task'
+        const { id } = req.params
+        let deletedData 
+
+        Task.findOne({
+            where: {
+                id: id,
+                UserId: req.UserId
+            }
         })
+            .then(task => {
+                if (!task) {
+                    res.status(404).json({
+                        statusCode: 404,
+                        message: 'Task not Found'
+                    })
+                } else {
+                    deletedData = task
+                    return task.destroy()
+                }
+            })
+            .then(() => {
+                res.status(200).json({
+                    statusCode: 200,
+                    message: 'Task Succesfully Deleted',
+                    payload: deletedData
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                
+                res.status(500).json({
+                    statusCode: 500,
+                    message: 'Server Error'
+                })
+            })
     }
 }
 
