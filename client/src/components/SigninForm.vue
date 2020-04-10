@@ -35,7 +35,7 @@
 
 <script>
 import axios from 'axios'
-const url = 'http://localhost:3000'
+const url = 'https://orion-kanban.herokuapp.com'
 
 export default {
     name: 'SigninForm',
