@@ -140,14 +140,6 @@ a {
             .cancel_signup_button{
                 color: $color3;
             }
-
-            // p {
-            //     color: $color2;
-            //     margin-bottom: 16px;
-            //     margin-top: 0px;
-            //     font-weight: 50;
-            //     font-size: 14px;
-            // }
         }
     }
 }
@@ -170,6 +162,24 @@ a {
         font-weight: bolder;
         font-size: 25px;
         text-decoration: none;
+    }
+    .addTask_button{
+        color: $color1;
+        background-color: $color6;
+
+        border-radius: 4px;
+        padding: 9px 18px;
+        margin-left: 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+
+        cursor: pointer;
+    }
+    .addTask_button:hover{
+        color: $color1;
+        background-color: $color5;
     }
     .signout_button{
         color: $color2;
