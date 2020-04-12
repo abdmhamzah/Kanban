@@ -53,6 +53,9 @@ a {
   border-radius: 4px;
   font-size: 16px;
 }
+.sign_page .container_sign .signin button:focus {
+  outline: 0;
+}
 .sign_page .container_sign .signin p {
   color: #AAAAAA;
   margin-bottom: 16px;
@@ -97,6 +100,9 @@ a {
 .sign_page .container_sign .signup input:focus {
   outline: none;
 }
+.sign_page .container_sign .signup button:focus {
+  outline: 0;
+}
 .sign_page .container_sign .signup .signup_button {
   color: #FFFFFF;
   background-color: #5AAC44;
@@ -127,22 +133,6 @@ a {
   font-weight: bolder;
   font-size: 25px;
   text-decoration: none;
-}
-.nav_content .addTask_button {
-  color: #FFFFFF;
-  background-color: #0B577C;
-  border-radius: 4px;
-  padding: 9px 18px;
-  margin-left: 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-.nav_content .addTask_button:hover {
-  color: #FFFFFF;
-  background-color: #0079C1;
 }
 .nav_content .signout_button {
   color: #AAAAAA;
@@ -218,6 +208,14 @@ a {
   font-size: 12px;
   margin: 5px;
 }
+.main_page .container_main .board .board_content .card .new_task {
+  color: #777777;
+  font-size: 14px;
+  margin: 5px;
+}
+.main_page .container_main .board .board_content .card .new_task:hover {
+  color: #0079C1;
+}
 .main_page .container_main .board .board_content .card .task_footer {
   display: flex;
   justify-content: space-between;
@@ -243,14 +241,58 @@ a {
 .main_page .container_main .board .board_content .card .task_footer .crud a i {
   margin-left: 10px;
 }
-.main_page .container_main .board .board_content .card .task_footer .crud a .fa-refresh:hover {
+.main_page .container_main .board .board_content .card .task_footer .crud a .fa-arrow-circle-right:hover {
   color: #5AAC44;
 }
-.main_page .container_main .board .board_content .card .task_footer .crud a .fa-pencil:hover {
-  color: #FFBB19;
+.main_page .container_main .board .board_content .card .task_footer .crud a .fa-arrow-circle-left:hover {
+  color: #5AAC44;
 }
 .main_page .container_main .board .board_content .card .task_footer .crud a .fa-trash:hover {
   color: #FA4E43;
+}
+.main_page .container_main .board .board_content .new_card {
+  padding: 10px;
+}
+.main_page .container_main .board .board_content .new_card input {
+  width: 100%;
+  padding: 5px;
+  border: #AAAAAA solid 1px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.main_page .container_main .board .board_content .new_card input:focus {
+  outline: none;
+}
+.main_page .container_main .board .board_content .new_card input.input_title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.main_page .container_main .board .board_content .new_card input.input_desc {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.main_page .container_main .board .board_content .new_card div {
+  display: flex;
+}
+.main_page .container_main .board .board_content .new_card div button {
+  width: 100%;
+  justify-content: center;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.main_page .container_main .board .board_content .new_card div button:focus {
+  outline: 0;
+}
+.main_page .container_main .board .board_content .new_card div button.submit_add {
+  margin-right: 5px;
+  color: #FFFFFF;
+  background-color: #5AAC44;
+}
+.main_page .container_main .board .board_content .new_card div button.cancel_add {
+  margin-left: 5px;
+  color: #FFFFFF;
+  background-color: #AAAAAA;
 }
 
 /*# sourceMappingURL=style.css.map */

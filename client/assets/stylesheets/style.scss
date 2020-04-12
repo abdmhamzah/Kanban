@@ -72,6 +72,9 @@ a {
                 border-radius: 4px;
                 font-size: 16px;
             }
+            button:focus {
+                outline:0;
+            }
 
             p {
                 color: $color2;
@@ -123,6 +126,9 @@ a {
             input:focus{
                 outline: none;
             }
+            button:focus {
+                outline:0;
+            }
 
             .signup_button{
                 color: $color1;
@@ -163,24 +169,7 @@ a {
         font-size: 25px;
         text-decoration: none;
     }
-    .addTask_button{
-        color: $color1;
-        background-color: $color6;
 
-        border-radius: 4px;
-        padding: 9px 18px;
-        margin-left: 40px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-
-        cursor: pointer;
-    }
-    .addTask_button:hover{
-        color: $color1;
-        background-color: $color5;
-    }
     .signout_button{
         color: $color2;
         background-color: $color6;
@@ -262,6 +251,14 @@ a {
                         font-size: 12px;
                         margin: 5px;
                     }
+                    .new_task{
+                        color: $color3;
+                        font-size: 14px;
+                        margin: 5px;
+                    }
+                    .new_task:hover{
+                        color: $color5;
+                    }
                     .task_footer{
                         display: flex;
                         justify-content: space-between;
@@ -286,16 +283,60 @@ a {
                                 i {
                                     margin-left: 10px;
                                 }
-                                .fa-refresh:hover{
+                                .fa-arrow-circle-right:hover{
                                     color: $good;
                                 }
-                                .fa-pencil:hover{
-                                    color: $warn;
+                                .fa-arrow-circle-left:hover{
+                                    color: $good;
                                 }
                                 .fa-trash:hover{
                                     color: $danger;
                                 }
                             }
+                        }
+                    }
+                }
+                .new_card{
+                    padding: 10px;
+                    input{
+                        width: 100%;
+                        padding: 5px;
+                        border: $color2 solid 1px;
+                        box-sizing: border-box;
+                        border-radius: 4px;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                    input.input_title{
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+                    input.input_desc{
+                        font-size: 12px;
+                        margin-bottom: 10px;
+                    }
+                    div{
+                        display: flex;
+                        button{
+                            width: 100%;
+                            justify-content: center;
+                            width: 100%;
+                            border-radius: 4px;
+                            font-size: 12px;
+                        }
+                        button:focus {
+                            outline:0;
+                        }
+                        button.submit_add{
+                            margin-right: 5px;
+                            color: $color1;
+                            background-color: $good;
+                        }
+                        button.cancel_add{
+                            margin-left: 5px;
+                            color: $color1;
+                            background-color: $color2;
                         }
                     }
                 }

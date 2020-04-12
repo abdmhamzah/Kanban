@@ -1,16 +1,27 @@
 <template>
-    <div class="sign_page" v-show="sign_page">
+    <div class="sign_page">
         <div v-show="signin_field">
             <div class="container_sign">
                 <div class="signin">
                     <h4>Sign in Orion Kanban</h4>
                     <form @submit.prevent="signin">
-                        <input v-model="signin_email" class="signin_username" type="email" placeholder="Enter email" required>
-                        <input v-model="signin_password" class="signin_password" type="password" placeholder="Enter password" required>
+                        <input 
+                            v-model="signin_email" 
+                            class="signin_username" 
+                            type="email" 
+                            placeholder="Enter email" required>
+                        <input 
+                            v-model="signin_password" 
+                            class="signin_password" 
+                            type="password" 
+                            placeholder="Enter password" required>
                         <button type="submit" class="signin_button">Sign In</button>
                     </form>
                     <p>OR</p>
-                    <button class="signin_google_button" @click.prevent="signinGoogle"><i class="fa fa-google"></i>Sign in with Google</button>
+                    <button class="signin_google_button" @click.prevent="signinGoogle">
+                        <i class="fa fa-google"></i>
+                        Sign in with Google
+                    </button>
                     <a @click.prevent="toSignup" href="#" class="signin_register">Sign Up for an account</a>
                 </div>
             </div>
@@ -21,9 +32,21 @@
                 <div class="signup">
                     <h4>Sign up for your account</h4>
                     <form @submit.prevent="signup">
-                        <input v-model="signup_name" class="signup_name" type="text" placeholder="Enter your name" required>
-                        <input v-model="signup_email" class="signup_email" type="email" placeholder="Enter your email" required>
-                        <input v-model="signup_password" class="signup_password" type="password" placeholder="Enter your password" required>
+                        <input 
+                            v-model="signup_name" 
+                            class="signup_name" 
+                            type="text" 
+                            placeholder="Enter your name" required>
+                        <input 
+                            v-model="signup_email" 
+                            class="signup_email" 
+                            type="email" 
+                            placeholder="Enter your email" required>
+                        <input 
+                            v-model="signup_password" 
+                            class="signup_password" 
+                            type="password" 
+                            placeholder="Enter your password" required>
                         <button class="signup_button">Sign Up</button>
                     </form>
                     <a href="#" class="cancel_signup_button" @click.prevent="toSignin">Cancel</a>
@@ -35,18 +58,20 @@
 
 <script>
 import axios from 'axios'
-const url = 'https://orion-kanban.herokuapp.com'
 
 export default {
     name: 'SigninForm',
+    props: ['url'],
     data(){
         return {
-            sign_page: true,
             signin_field: true,
             signup_field: false,
             signin_email: null, signin_password: null,
             signup_name: null, signup_email: null, signup_password: null,
         }
+    },
+    created(){
+        
     },
     methods: {
         toSignup(){
@@ -58,10 +83,13 @@ export default {
             this.signin_field = true
             this.signup_field = false
         },
+        // toMain(){
+           
+        // },
 
         signup(){           
             axios({
-                url: `${url}/user/signup`,
+                url: `${this.url}/user/signup`,
                 method: 'POST',
                 data: {
                     name: this.signup_name,
@@ -72,11 +100,13 @@ export default {
                 .then(() => {
                     this.signup_field = false
                     this.signin_field = true
-                    this.resetForm()
+                    this.signup_name = null
+                    this.signup_email = null
+                    this.signup_password = null
 
                     const Toast = Swal.mixin({
                         toast: true,
-                        position: 'top-end',
+                        position: 'top',
                         showConfirmButton: false,
                         timer: 3000,
                         timerProgressBar: true,
@@ -87,6 +117,7 @@ export default {
                         })
                         Toast.fire({
                         icon: 'success',
+                        position: 'top',
                         title: 'Signed Up Successfully'
                         })
                 })
@@ -97,7 +128,7 @@ export default {
         
         signin(){
             axios({
-                url: `${url}/user/signin`,
+                url: `${this.url}/user/signin`,
                 method: 'POST',
                 data: {
                     email: this.signin_email,
@@ -105,15 +136,19 @@ export default {
                 }
             })
                 .then(userLogin => {
+                    console.log(userLogin.data);
+                    this.signin_email = null
+                    this.signin_password = null
+
                     localStorage.setItem('token', userLogin.data.payload.token)
                     localStorage.setItem('name', userLogin.data.payload.user.name)
                     localStorage.setItem('email', userLogin.data.payload.user.email)
-                    this.resetFormO()
-                    this.$emit('refreshSession')
+                    // this.$emit('toMain', false, true)
+                    this.$emit('toMain')
 
                     const Toast = Swal.mixin({
                     toast: true,
-                    position: 'top-end',
+                    position: 'top',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -129,6 +164,22 @@ export default {
                 })
                 .catch(err => {
                     console.log(err);
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Invalid Email / Password'
+                    })
                 })
             
         },
@@ -160,17 +211,6 @@ export default {
                     
                 // })
         },
-
-        resetForm: function(){
-            signin_email = null
-            signin_password = null
-            signup_name = null
-            signup_email = null
-            signup_password = null
-        }
-    },
-    created(){
-
     }
 }
 </script>
