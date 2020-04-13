@@ -43,8 +43,6 @@ export default {
         }
     },
     created(){
-        console.log('masuksini');
-        
         this.getData()
     },
     props: ['url'],

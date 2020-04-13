@@ -18,11 +18,8 @@
                         <button type="submit" class="signin_button">Sign In</button>
                     </form>
                     <p>OR</p>
-                    <button class="signin_google_button" @click.prevent="signinGoogle">
-                        <i class="fa fa-google"></i>
-                        Sign in with Google
-                    </button>
-                    <a @click.prevent="toSignup" href="#" class="signin_register">Sign Up for an account</a>
+                    <button @click.prevent="signinGoogle" class="signin_google_button"><i class="fa fa-google"></i>Sign in with Google</button>
+                    <a @click.prevent="toSignup" class="signin_register" href="#">Sign Up for an account</a>
                 </div>
             </div>
         </div>
@@ -83,9 +80,6 @@ export default {
             this.signin_field = true
             this.signup_field = false
         },
-        // toMain(){
-           
-        // },
 
         signup(){           
             axios({
@@ -103,7 +97,7 @@ export default {
                     this.signup_name = null
                     this.signup_email = null
                     this.signup_password = null
-
+                    
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top',
@@ -122,7 +116,7 @@ export default {
                         })
                 })
                 .catch(err => {
-                    console.log(err);
+                    console.log(err.response);
                 })
         },
         
@@ -136,7 +130,6 @@ export default {
                 }
             })
                 .then(userLogin => {
-                    console.log(userLogin.data);
                     this.signin_email = null
                     this.signin_password = null
 
@@ -184,32 +177,33 @@ export default {
             
         },
 
-        signinGoogle(){
-            
-            // this.$gAuth.signIn()
-            //     .then(GoogleUser => {
-            //         let id_token = GoogleUser.getAuthResponse().id_token
-            //         console.log('masuk');
+        signinGoogle(){  
+            console.log('masuk methods');
+            this.$gAuth.signIn()
+                .then(GoogleUser => {
+                    let id_token = GoogleUser.getAuthResponse().id_token
+                    console.log('masuk');
                     
-            //         axios({
-            //             url: `${url}/user/signin-google`,
-            //             method: 'POST',
-            //             headers: {
-            //                 token: id_token
-            //             }
-            //         })
-            //             .then(token => {
-            //                 localStorage.setItem('token', token.data)
-            //             })
-            //             .catch(err => {
-            //                 console.log(err);
-                            
-            //             })
-            //     })
-            //     .catch(err => {
-            //         console.log(err);
+                    axios({
+                        url: `${url}/user/signin-google`,
+                        method: 'POST',
+                        headers: {
+                            token: id_token
+                        }
+                    })
+                        .then(gUser => {
+                            localStorage.setItem('token', gUser.data.payload.token)
+                            localStorage.setItem('name', gUser.data.payload.user.name)
+                            localStorage.setItem('email', gUser.data.payload.user.email)
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                })
+                .catch(err => {
+                    console.log(err);
                     
-                // })
+                })
         },
     }
 }

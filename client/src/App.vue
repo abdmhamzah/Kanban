@@ -17,6 +17,7 @@
 
 <script>
 const mainUrl = 'https://orion-kanban.herokuapp.com'
+// const mainUrl = 'http://localhost:3000'
 import SigninForm from './components/SigninForm'
 import MainPage from './components/MainPage'
 
@@ -40,11 +41,11 @@ export default {
         checkSession: function(){
             const token = localStorage.getItem('token')
             if (!token) {
-                console.log('ga ada token');
+                // console.log('ga ada token');
                 this.sign_page = true
                 this.main_page = false
             } else {
-                console.log('ada token');
+                // console.log('ada token');
                 this.sign_page = false
                 this.main_page = true
             }
