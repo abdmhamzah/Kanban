@@ -32,9 +32,12 @@ class ControllerUser {
                 }
             })
             .catch(err => {
+                console.log(err);
+                
                 res.status(500).json({
                     statusCode: 500,
-                    message: 'Server Error'
+                    message: 'Server Error',
+                    err: err
                 })
             })
     }
